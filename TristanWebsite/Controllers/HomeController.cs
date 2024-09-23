@@ -13,10 +13,18 @@ namespace TristanWebsite.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            ActivitiesAPI activitiesAPI = ActivitiesAPI.Instance();
 
-            return View();
+            Athlete athlete = await activitiesAPI.GetAthlete();
+            List<Activities> activites = await activitiesAPI.GetActivities();
+
+            HomeViewModel homeViewModel = new HomeViewModel();
+            homeViewModel.athlete = athlete;
+            homeViewModel.activities = activites;
+
+            return View(homeViewModel);
         }
 
         public IActionResult Privacy()
