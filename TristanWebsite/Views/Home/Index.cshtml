@@ -15,27 +15,36 @@
             </div>
             <div class="row">
                 <div class="evenLeft centerColumn">
-                    <div class="card-subtitle">
+                    <span class="material-symbols-outlined">
+                        directions_bike
+                    </span>
+                    <h6>
                         Rides
-                    </div>
+                    </h6>
                     <div class="card-subtitle">
                         @Model.athlete.ActivityStats.All_Ride_totals.Count
                     </div>
                 </div>
                 <div class="vertical"></div>
                 <div class="evenCenter centerColumn">
-                    <div class="card-subtitle">
+                    <span class="material-symbols-outlined">
+                        distance
+                    </span>
+                    <h6>
                         Total Distance
-                    </div>
+                    </h6>
                     <div class="card-subtitle">
-                        @Model.athlete.ActivityStats.All_Ride_totals.Distance
+                        @Html.DisplayFor(model => model.athlete.ActivityStats.All_Ride_totals.Distance) mi
                     </div>
                 </div>
                 <div class="vertical"></div>
                 <div class="evenRight centerColumn">
-                    <div class="card-subtitle">
+                    <span class="material-symbols-outlined">
+                        schedule
+                    </span>
+                    <h6>
                         Total Time
-                    </div>
+                    </h6>
                     <div class="card-subtitle">
                         @Model.athlete.ActivityStats.All_Ride_totals.Elaspsed_Time_Str
                     </div>
@@ -59,37 +68,41 @@
                             </div>
                         </div>
                     </div>
-                    @* <div class="card-text">
-                        <h3>
-                            @activity.Type
-                        </h3>
-                    </div> *@
                     <hr/>
                     <div class="row">
-                        <div class="evenLeft centerColumn"> 
-                            <div class="card-subtitle">
+                        <div class="evenLeft centerColumn">
+                            <span class="material-symbols-outlined">
+                                distance
+                            </span>
+                            <h6>
                                 Distance
-                            </div>
+                            </h6>
                             <div class="card-text">
-                                @activity.Distance miles
+                                @Html.DisplayFor(item => activity.Distance) mi
                             </div>
                         </div>
                         <div class="vertical"></div>
 
                         <div class="evenCenter centerColumn">
-                            <div class="card-subtitle">
+                            <span class="material-symbols-outlined">
+                                elevation
+                            </span>
+                            <h6>
                                 Elevation Gain
-                            </div>
+                            </h6>
                             <div class="card-text">
-                                @activity.Total_Elevation_Gain ft
+                                @Html.DisplayFor(item => activity.Total_Elevation_Gain) ft
                             </div>
                         </div>
                         <div class="vertical"></div>
 
                         <div class="evenRight centerColumn">
-                            <div class="card-subtitle">
+                            <span class="material-symbols-outlined">
+                                schedule
+                            </span>
+                            <h6>
                                 Time
-                            </div>
+                            </h6>
                             <div class="card-text">
                                 @activity.Moving_Time_Str
                             </div>

@@ -39,22 +39,6 @@ namespace TristanWebsite
 
             var result = JsonConvert.DeserializeObject<List<Activities>>(json)!;
 
-            /*foreach (var entity in result!)
-            {
-                System.Diagnostics.Debug.WriteLine(entity.Id);
-                System.Diagnostics.Debug.WriteLine(entity.Name);
-                System.Diagnostics.Debug.WriteLine(entity.Distance / 1609);
-                System.Diagnostics.Debug.WriteLine(entity.Moving_Time / 60);
-                System.Diagnostics.Debug.WriteLine(entity.Type);
-                System.Diagnostics.Debug.WriteLine(entity.Average_Speed * 2.237);
-                System.Diagnostics.Debug.WriteLine(entity.Max_Speed * 2.237);
-                System.Diagnostics.Debug.WriteLine(entity.Average_Cadence);
-                System.Diagnostics.Debug.WriteLine(entity.Average_Watts);
-                System.Diagnostics.Debug.WriteLine(entity.Max_Watts);
-                System.Diagnostics.Debug.WriteLine(entity.Average_Heartrate);
-                System.Diagnostics.Debug.WriteLine(entity.Max_Heartrate);
-            }*/
-
             return result;
         }
 

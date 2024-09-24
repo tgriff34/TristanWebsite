@@ -42,8 +42,6 @@ namespace TristanWebsite
             string result = "";
             string suffix = "";
 
-            System.Diagnostics.Debug.WriteLine(dateTime.Hour / 12);
-
             if (dateTime.Hour / 12 == 0)
             {
                 result = $"{dateTime.Hour}";
