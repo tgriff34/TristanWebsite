@@ -8,7 +8,7 @@ namespace TristanWebsite
     {
         private static ActivitiesAPI? instance = null;
         private static readonly HttpClient _httpClient = new HttpClient();
-        private string access_token = "465cfbcb86982dbc6759c27aec3437ed2d4600b2";
+        private string access_token = "492c6129a1716de1e0820406a722e515ad4457f9";
         private string refresh_token = "7ee68e8dcfb7ede11bb720ddcd7b3cda41bb366b";
 
         private ActivitiesAPI() {
@@ -43,8 +43,8 @@ namespace TristanWebsite
             {
                 System.Diagnostics.Debug.WriteLine(entity.Id);
                 System.Diagnostics.Debug.WriteLine(entity.Name);
-                System.Diagnostics.Debug.WriteLine(entity.Distance);
-                System.Diagnostics.Debug.WriteLine(entity.Moving_Time);
+                System.Diagnostics.Debug.WriteLine(entity.Distance / 1609);
+                System.Diagnostics.Debug.WriteLine(entity.Moving_Time / 60);
                 System.Diagnostics.Debug.WriteLine(entity.Type);
                 System.Diagnostics.Debug.WriteLine(entity.Average_Speed * 2.237);
                 System.Diagnostics.Debug.WriteLine(entity.Max_Speed * 2.237);

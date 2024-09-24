@@ -14,6 +14,5 @@
         public float Max_Watts { get; set; }
         public float Average_Heartrate { get; set; }
         public float Max_Heartrate { get; set; }
-
     }
 }

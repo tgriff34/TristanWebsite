@@ -22,11 +22,6 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-var _activitiesAPI = ActivitiesAPI.Instance();
-
-await _activitiesAPI.GetAthlete();
-await _activitiesAPI.GetActivities();
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
