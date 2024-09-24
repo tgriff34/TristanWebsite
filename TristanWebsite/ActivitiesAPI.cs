@@ -8,7 +8,7 @@ namespace TristanWebsite
     {
         private static ActivitiesAPI? instance = null;
         private static readonly HttpClient _httpClient = new HttpClient();
-        private string access_token = "492c6129a1716de1e0820406a722e515ad4457f9";
+        private string access_token = "d3d047bb251c5b7daf204c3a1c2e537d67dac3aa";
         private string refresh_token = "7ee68e8dcfb7ede11bb720ddcd7b3cda41bb366b";
 
         private ActivitiesAPI() {
@@ -37,9 +37,9 @@ namespace TristanWebsite
 
             string json = await output.Content.ReadAsStringAsync();
 
-            var result = JsonConvert.DeserializeObject<List<Activities>>(json);
+            var result = JsonConvert.DeserializeObject<List<Activities>>(json)!;
 
-            foreach (var entity in result!)
+            /*foreach (var entity in result!)
             {
                 System.Diagnostics.Debug.WriteLine(entity.Id);
                 System.Diagnostics.Debug.WriteLine(entity.Name);
@@ -53,7 +53,7 @@ namespace TristanWebsite
                 System.Diagnostics.Debug.WriteLine(entity.Max_Watts);
                 System.Diagnostics.Debug.WriteLine(entity.Average_Heartrate);
                 System.Diagnostics.Debug.WriteLine(entity.Max_Heartrate);
-            }
+            }*/
 
             return result;
         }
@@ -70,6 +70,20 @@ namespace TristanWebsite
             string json = await output.Content.ReadAsStringAsync();
 
             return JsonConvert.DeserializeObject<Athlete>(json)!;
+        }
+
+        public async Task<ActivityStats> GetAthleteStats(Athlete athlete)
+        {
+            HttpResponseMessage output;
+            using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, $"https://www.strava.com/api/v3/athletes/{athlete.Id}/stats"))
+            {
+                requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", access_token);
+
+                output = await _httpClient.SendAsync(requestMessage);
+            }
+            string json = await output.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<ActivityStats>(json)!;
         }
     }
 }

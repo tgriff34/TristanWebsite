@@ -21,3 +21,9 @@ body {
     margin-bottom: 60px;
     background-color: floralwhite;
 }
+
+*{
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}

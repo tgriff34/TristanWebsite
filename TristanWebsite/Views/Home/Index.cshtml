@@ -36,7 +36,27 @@
                         </h3>
                     </div>
                     <hr/>
-                    <p style="float:left;">Distance | <span style="float:right;">Time</span></p>
+                    <div class="row">
+                        <div class="evenLeft centerColumn"> 
+                            <div class="card-subtitle">
+                                Distance
+                            </div>
+                        </div>
+                        <div class="vertical"></div>
+
+                        <div class="evenCenter centerColumn">
+                            <div class="card-subtitle">
+                                Elevation Gain
+                            </div>
+                        </div>
+                        <div class="vertical"></div>
+
+                        <div class="evenRight centerColumn">
+                            <div class="card-subtitle">
+                                Time
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         }
@@ -45,12 +65,23 @@
 
 
 <style>
+    hr {
+        background-color: #DEDEDE;
+        opacity: 1;
+    }
     .row {
         align-content:center;
+    }
+    .centerColumn{
+        text-align:center;
+        height:100%;
     }
     .column {
         float: left;
         height: 100%;
+    }
+    .evenLeft, .evenRight, .evenCenter {
+        width: 33%;
     }
     .left, .right {
         width:25%;
@@ -58,16 +89,14 @@
     .middle {
         width:50%;
     }
-    .centerBlock {
-        display:flex;
-        justify-content:center;
-        align-self:center;
-        align-content:center;
-        align-items:center;
-    }
-
     .card {
         background-color: #F7F7FA;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    }
+    .vertical {
+        width: 1px;
+        border-left: 1px solid #DEDEDE;
+        height: inherit;
+        padding: 0;
     }
 </style>

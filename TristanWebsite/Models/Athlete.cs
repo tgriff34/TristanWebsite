@@ -11,5 +11,7 @@ namespace TristanWebsite.Models
         public string State { get; set; }
         public string Country { get; set; }
         public string Profile { get; set; }
+        public int Follower_Count { get; set; }
+        public ActivityStats ActivityStats { get; set; }
     }
 }
