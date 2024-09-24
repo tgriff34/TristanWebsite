@@ -13,10 +13,33 @@
                     @Model.athlete.FirstName @Model.athlete.LastName
                 </h2>
             </div>
-            <div class="card-text text-center">
-                <h3>
-                    
-                </h3>
+            <div class="row">
+                <div class="evenLeft centerColumn">
+                    <div class="card-subtitle">
+                        Rides
+                    </div>
+                    <div class="card-subtitle">
+                        @Model.athlete.ActivityStats.All_Ride_totals.Count
+                    </div>
+                </div>
+                <div class="vertical"></div>
+                <div class="evenCenter centerColumn">
+                    <div class="card-subtitle">
+                        Total Distance
+                    </div>
+                    <div class="card-subtitle">
+                        @Model.athlete.ActivityStats.All_Ride_totals.Distance
+                    </div>
+                </div>
+                <div class="vertical"></div>
+                <div class="evenRight centerColumn">
+                    <div class="card-subtitle">
+                        Total Time
+                    </div>
+                    <div class="card-subtitle">
+                        @Model.athlete.ActivityStats.All_Ride_totals.Elaspsed_Time_Str
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -25,21 +48,30 @@
         {
             <div class="card" style="margin:10px;">
                 <div class="card-body">
-                    <div class="card-title">
-                        <h2>
-                            @activity.Name
-                        </h2>
+                    <div class="row">
+                        <img src="@Url.Content(Model.athlete.Profile)" style="padding:0; margin:10px; width:64px; height:64px;">
+                        <div class="card-title" style="width:auto; align-content: center;">
+                            <h2>
+                                @activity.Name
+                            </h2>
+                            <div class="card-subtitle">
+                                @activity.Start_Date_Formatted at @activity.Start_Time_Formatted
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-text">
+                    @* <div class="card-text">
                         <h3>
                             @activity.Type
                         </h3>
-                    </div>
+                    </div> *@
                     <hr/>
                     <div class="row">
                         <div class="evenLeft centerColumn"> 
                             <div class="card-subtitle">
                                 Distance
+                            </div>
+                            <div class="card-text">
+                                @activity.Distance miles
                             </div>
                         </div>
                         <div class="vertical"></div>
@@ -48,12 +80,18 @@
                             <div class="card-subtitle">
                                 Elevation Gain
                             </div>
+                            <div class="card-text">
+                                @activity.Total_Elevation_Gain ft
+                            </div>
                         </div>
                         <div class="vertical"></div>
 
                         <div class="evenRight centerColumn">
                             <div class="card-subtitle">
                                 Time
+                            </div>
+                            <div class="card-text">
+                                @activity.Moving_Time_Str
                             </div>
                         </div>
                     </div>
@@ -65,6 +103,10 @@
 
 
 <style>
+    img {
+        border-radius: 50%;
+        object-fit: cover;
+    }
     hr {
         background-color: #DEDEDE;
         opacity: 1;

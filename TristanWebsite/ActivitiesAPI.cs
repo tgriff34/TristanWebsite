@@ -8,7 +8,7 @@ namespace TristanWebsite
     {
         private static ActivitiesAPI? instance = null;
         private static readonly HttpClient _httpClient = new HttpClient();
-        private string access_token = "d3d047bb251c5b7daf204c3a1c2e537d67dac3aa";
+        private string access_token = "178bc87ccc360c737ccf2bd38d5e2fc98c8c48ba";
         private string refresh_token = "7ee68e8dcfb7ede11bb720ddcd7b3cda41bb366b";
 
         private ActivitiesAPI() {

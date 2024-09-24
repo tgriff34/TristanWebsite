@@ -20,10 +20,11 @@ namespace TristanWebsite.Controllers
             Athlete athlete = await activitiesAPI.GetAthlete();
             List<Activities> activites = await activitiesAPI.GetActivities();
             ActivityStats activityStats = await activitiesAPI.GetAthleteStats(athlete);
-
             athlete.ActivityStats = activityStats;
 
-            Debug.WriteLine("================ Athlete ==================");
+            Utilities.parseData(athlete, activites);
+
+            /*Debug.WriteLine("================ Athlete ==================");
             Debug.WriteLine(athlete.Id);
             Debug.WriteLine(athlete.FirstName);
             Debug.WriteLine(athlete.LastName);
@@ -37,7 +38,7 @@ namespace TristanWebsite.Controllers
             Debug.WriteLine(athlete.ActivityStats.Recent_Ride_Totals.Distance);
             Debug.WriteLine(athlete.ActivityStats.Recent_Ride_Totals.Elapsed_Time);
             Debug.WriteLine(athlete.ActivityStats.Recent_Ride_Totals.Moving_Time);
-            Debug.WriteLine("===========================================");
+            Debug.WriteLine("===========================================");*/
 
 
             HomeViewModel homeViewModel = new HomeViewModel();
