@@ -4,5 +4,6 @@
     {
         public string Polyline { get; set; }
         public string Summary_Polyline { get; set; }
+        public string MapImageURL { get; set; }
     }
 }

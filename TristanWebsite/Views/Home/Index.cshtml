@@ -8,7 +8,7 @@
     <div class="column left">
         <div class="card">
             <div class="card-body">
-                <img style="margin: auto; display:block; margin-bottom:10px;" src="@Url.Content(Model.athlete.Profile)">
+                <img class="img-circle" style="margin: auto; display:block; margin-bottom:10px;" src="@Url.Content(Model.athlete.Profile)">
                 <div class="card-title text-center">
                     <h2>
                         @Model.athlete.FirstName @Model.athlete.LastName
@@ -60,7 +60,7 @@
             <div class="card" style="margin-bottom:10px;">
                 <div class="card-body">
                     <div class="row">
-                        <img src="@Url.Content(Model.athlete.Profile)" style="padding:0; margin:10px; width:64px; height:64px;">
+                        <img class="img-circle" src="@Url.Content(Model.athlete.Profile)" style="padding:0; margin:10px; width:64px; height:64px;">
                         <div class="card-title" style="width:auto; align-content: center;">
                             <h2>
                                 @activity.Name
@@ -68,8 +68,12 @@
                             <div class="card-subtitle">
                                 @activity.Start_Date_Formatted at @activity.Start_Time_Formatted
                             </div>
+                            <div class="card-subtitle" style="font-size:small">
+                                @activity.Location
+                            </div>
                         </div>
                     </div>
+                    <img src="@Url.Content(activity.Map.MapImageURL)" style="margin:auto; border-radius:10px; display:block;"/>
                     <hr/>
                     <div class="row">
                         <div class="evenLeft centerColumn">
@@ -208,7 +212,7 @@
     .container {
         max-width: 90%;
     }
-    img {
+    .img-circle {
         border-radius: 50%;
         object-fit: cover;
     }

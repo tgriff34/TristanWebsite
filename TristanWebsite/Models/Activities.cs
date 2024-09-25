@@ -30,5 +30,7 @@ namespace TristanWebsite.Models
         public float Average_Heartrate { get; set; }
         public float Max_Heartrate { get; set; }
         public Map Map { get; set; }
+        public float[] Start_latlng { get; set; }
+        public string Location {  get; set; }
     }
 }

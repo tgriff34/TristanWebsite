@@ -24,23 +24,6 @@ namespace TristanWebsite.Controllers
 
             Utilities.parseData(athlete, activites);
 
-            /*Debug.WriteLine("================ Athlete ==================");
-            Debug.WriteLine(athlete.Id);
-            Debug.WriteLine(athlete.FirstName);
-            Debug.WriteLine(athlete.LastName);
-            Debug.WriteLine(athlete.LastName);
-            Debug.WriteLine(athlete.City);
-            Debug.WriteLine(athlete.State);
-            Debug.WriteLine(athlete.Follower_Count);
-            Debug.WriteLine(athlete.ActivityStats.Biggest_Ride_Distance);
-            Debug.WriteLine(athlete.ActivityStats.Biggest_Climb_Elevation_Gain);
-            Debug.WriteLine(athlete.ActivityStats.Recent_Ride_Totals.Count);
-            Debug.WriteLine(athlete.ActivityStats.Recent_Ride_Totals.Distance);
-            Debug.WriteLine(athlete.ActivityStats.Recent_Ride_Totals.Elapsed_Time);
-            Debug.WriteLine(athlete.ActivityStats.Recent_Ride_Totals.Moving_Time);
-            Debug.WriteLine("===========================================");*/
-
-
             HomeViewModel homeViewModel = new HomeViewModel();
             homeViewModel.athlete = athlete;
             homeViewModel.activities = activites;
