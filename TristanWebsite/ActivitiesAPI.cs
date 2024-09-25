@@ -113,19 +113,5 @@ namespace TristanWebsite
 
             return map;
         }
-
-        public string MyHtmlEncode(string text)
-        {
-            char[] chars = HttpUtility.HtmlEncode(text).ToCharArray();
-            StringBuilder encodedValue = new StringBuilder();
-            foreach (char c in chars)
-            {
-                if ((int)c > 127) // above normal ASCII
-                    encodedValue.Append("&#" + (int)c + ";");
-                else
-                    encodedValue.Append(c);
-            }
-            return encodedValue.ToString();
-        }
     }
 }
