@@ -5,48 +5,50 @@
 }
 
 <div class="row">
-    <div class="column left card" style="margin:10px;">
-        <div class="card-body">
-            <img style="margin: auto; display:block; margin-bottom:10px;" src="@Url.Content(Model.athlete.Profile)">
-            <div class="card-title text-center">
-                <h2>
-                    @Model.athlete.FirstName @Model.athlete.LastName
-                </h2>
-            </div>
-            <div class="row">
-                <div class="evenLeft centerColumn">
-                    <span class="material-symbols-outlined">
-                        directions_bike
-                    </span>
-                    <h6>
-                        Rides
-                    </h6>
-                    <div class="card-subtitle">
-                        @Model.athlete.ActivityStats.All_Ride_totals.Count
-                    </div>
+    <div class="column left">
+        <div class="card">
+            <div class="card-body">
+                <img style="margin: auto; display:block; margin-bottom:10px;" src="@Url.Content(Model.athlete.Profile)">
+                <div class="card-title text-center">
+                    <h2>
+                        @Model.athlete.FirstName @Model.athlete.LastName
+                    </h2>
                 </div>
-                <div class="vertical"></div>
-                <div class="evenCenter centerColumn">
-                    <span class="material-symbols-outlined">
-                        distance
-                    </span>
-                    <h6>
-                        Total Distance
-                    </h6>
-                    <div class="card-subtitle">
-                        @Html.DisplayFor(model => model.athlete.ActivityStats.All_Ride_totals.Distance) mi
+                <div class="row">
+                    <div class="evenLeft centerColumn">
+                        <span class="material-symbols-outlined">
+                            directions_bike
+                        </span>
+                        <h6>
+                            Rides
+                        </h6>
+                        <div class="card-subtitle">
+                            @Model.athlete.ActivityStats.All_Ride_totals.Count
+                        </div>
                     </div>
-                </div>
-                <div class="vertical"></div>
-                <div class="evenRight centerColumn">
-                    <span class="material-symbols-outlined">
-                        schedule
-                    </span>
-                    <h6>
-                        Total Time
-                    </h6>
-                    <div class="card-subtitle">
-                        @Model.athlete.ActivityStats.All_Ride_totals.Elaspsed_Time_Str
+                    <div class="vertical"></div>
+                    <div class="evenCenter centerColumn">
+                        <span class="material-symbols-outlined">
+                            distance
+                        </span>
+                        <h6>
+                            Total Distance
+                        </h6>
+                        <div class="card-subtitle">
+                            @Html.DisplayFor(model => model.athlete.ActivityStats.All_Ride_totals.Distance) mi
+                        </div>
+                    </div>
+                    <div class="vertical"></div>
+                    <div class="evenRight centerColumn">
+                        <span class="material-symbols-outlined">
+                            schedule
+                        </span>
+                        <h6>
+                            Total Time
+                        </h6>
+                        <div class="card-subtitle">
+                            @Model.athlete.ActivityStats.All_Ride_totals.Elaspsed_Time_Str
+                        </div>
                     </div>
                 </div>
             </div>
@@ -55,7 +57,7 @@
     <div class="middle column">
         @foreach (var activity in Model.activities)
         {
-            <div class="card" style="margin:10px;">
+            <div class="card" style="margin-bottom:10px;">
                 <div class="card-body">
                     <div class="row">
                         <img src="@Url.Content(Model.athlete.Profile)" style="padding:0; margin:10px; width:64px; height:64px;">
@@ -108,14 +110,104 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row" style="margin-top:10px;">
+                        <div class="evenLeft centerColumn">
+                            <span class="material-symbols-outlined">
+                                Speed
+                            </span>
+                            <h6>
+                                Avg. Speed
+                            </h6>
+                            <div class="card-text">
+                                @Html.DisplayFor(item => activity.Average_Speed)mi/h
+                            </div>
+                        </div>
+                        <div class="vertical"></div>
+
+                        <div class="evenCenter centerColumn">
+                            <span class="material-symbols-outlined">
+                                Exercise
+                            </span>
+                            <h6>
+                                Avg. Power
+                            </h6>
+                            <div class="card-text">
+                                @Html.DisplayFor(item => activity.Average_Watts)w
+                            </div>
+                        </div>
+                        <div class="vertical"></div>
+
+                        <div class="evenRight centerColumn">
+                            <span class="material-symbols-outlined">
+                                Favorite
+                            </span>
+                            <h6>
+                                Avg. HR
+                            </h6>
+                            <div class="card-text">
+                                @Html.DisplayFor(item => activity.Average_Heartrate)bpm
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         }
+    </div>
+    <div class="column right">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    <h4>
+                        Recent Rides
+                    </h4>
+                </div>
+                <div class="row">
+                    <div class="evenLeft centerColumn">
+                        <span class="material-symbols-outlined">
+                            directions_bike
+                        </span>
+                        <h6>
+                            Rides
+                        </h6>
+                        <div class="card-subtitle">
+                            @Model.athlete.ActivityStats.Recent_Ride_Totals.Count
+                        </div>
+                    </div>
+                    <div class="vertical"></div>
+                    <div class="evenCenter centerColumn">
+                        <span class="material-symbols-outlined">
+                            distance
+                        </span>
+                        <h6>
+                            Total Distance
+                        </h6>
+                        <div class="card-subtitle">
+                            @Html.DisplayFor(model => model.athlete.ActivityStats.Recent_Ride_Totals.Distance) mi
+                        </div>
+                    </div>
+                    <div class="vertical"></div>
+                    <div class="evenRight centerColumn">
+                        <span class="material-symbols-outlined">
+                            schedule
+                        </span>
+                        <h6>
+                            Total Time
+                        </h6>
+                        <div class="card-subtitle">
+                            @Model.athlete.ActivityStats.Recent_Ride_Totals.Elaspsed_Time_Str
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 
 <style>
+    .container {
+        max-width: 90%;
+    }
     img {
         border-radius: 50%;
         object-fit: cover;

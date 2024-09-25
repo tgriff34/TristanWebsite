@@ -18,12 +18,17 @@ namespace TristanWebsite.Models
         public string Start_Date { get; set; }
         public string Start_Date_Formatted { get; set; }
         public string Start_Time_Formatted { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = true)]
         public float Average_Speed { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = true)]
         public float Max_Speed { get; set; }
         public float Average_Cadence { get; set; }
         public float Average_Watts { get; set; }
         public float Max_Watts { get; set; }
         public float Average_Heartrate { get; set; }
         public float Max_Heartrate { get; set; }
+        public Map Map { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
 using TristanWebsite.Models;
 
 namespace TristanWebsite
@@ -8,8 +9,7 @@ namespace TristanWebsite
     {
         private static ActivitiesAPI? instance = null;
         private static readonly HttpClient _httpClient = new HttpClient();
-        private string access_token = "178bc87ccc360c737ccf2bd38d5e2fc98c8c48ba";
-        private string refresh_token = "7ee68e8dcfb7ede11bb720ddcd7b3cda41bb366b";
+        private static string? access_token;
 
         private ActivitiesAPI() {
             
@@ -19,6 +19,8 @@ namespace TristanWebsite
         {
             if (instance == null)
             {
+                IConfigurationRoot config = new ConfigurationBuilder().AddUserSecrets<ActivitiesAPI>().Build();
+                access_token = config["StravaAPIKey"];
                 instance = new ActivitiesAPI();
             }
             return instance;

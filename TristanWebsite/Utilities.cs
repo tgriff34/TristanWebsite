@@ -10,10 +10,18 @@ namespace TristanWebsite
             {
                 athlete.ActivityStats.Biggest_Ride_Distance = athlete.ActivityStats.Biggest_Ride_Distance / 1609;
                 athlete.ActivityStats.Biggest_Climb_Elevation_Gain = athlete.ActivityStats.Biggest_Climb_Elevation_Gain * (float)3.281;
+
+                // All-Time-Rides
                 athlete.ActivityStats.All_Ride_totals.Distance = athlete.ActivityStats.All_Ride_totals.Distance / 1609;
                 athlete.ActivityStats.All_Ride_totals.Elevation_Gain = athlete.ActivityStats.All_Ride_totals.Elevation_Gain * (float)3.281;
                 athlete.ActivityStats.All_Ride_totals.Elaspsed_Time_Str = GetMovingTime(athlete.ActivityStats.All_Ride_totals.Elapsed_Time);
                 athlete.ActivityStats.All_Ride_totals.Moving_Time_Str = GetMovingTime(athlete.ActivityStats.All_Ride_totals.Moving_Time);
+
+                // Recent Rides
+                athlete.ActivityStats.Recent_Ride_Totals.Distance = athlete.ActivityStats.Recent_Ride_Totals.Distance / 1609;
+                athlete.ActivityStats.Recent_Ride_Totals.Elevation_Gain = athlete.ActivityStats.Recent_Ride_Totals.Elevation_Gain * (float)3.281;
+                athlete.ActivityStats.Recent_Ride_Totals.Elaspsed_Time_Str = GetMovingTime(athlete.ActivityStats.Recent_Ride_Totals.Elapsed_Time);
+                athlete.ActivityStats.Recent_Ride_Totals.Moving_Time_Str = GetMovingTime(athlete.ActivityStats.Recent_Ride_Totals.Moving_Time);
             }
 
             if (activities != null)
@@ -26,6 +34,8 @@ namespace TristanWebsite
                     entity.Moving_Time_Str = GetMovingTime(entity.Moving_Time);
                     entity.Distance = entity.Distance / 1609;
                     entity.Total_Elevation_Gain = entity.Total_Elevation_Gain * (float)3.281;
+                    entity.Average_Speed = entity.Average_Speed * (float)2.237;
+                    entity.Max_Speed = entity.Max_Speed * (float)2.237;
                 }
             }
 
@@ -34,7 +44,7 @@ namespace TristanWebsite
         private static string GetMovingTime(int movingTime)
         {
             TimeSpan time = TimeSpan.FromSeconds(movingTime);
-            string result = string.Format("{0}hr {1}mn {2}sec", (int)time.TotalHours, time.Minutes, time.Seconds);
+            string result = string.Format("{0}h {1}m {2}s", (int)time.TotalHours, time.Minutes, time.Seconds);
             return result;
         }
         private static string GetHourAMPM(DateTime dateTime)
