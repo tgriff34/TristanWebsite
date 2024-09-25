@@ -30,6 +30,11 @@ namespace TristanWebsite.Controllers
 
             return View(homeViewModel);
         }
+        
+        public IActionResult About()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {
