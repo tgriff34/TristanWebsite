@@ -17,18 +17,23 @@ namespace TristanWebsite.Controllers
         {
             ActivitiesAPI activitiesAPI = ActivitiesAPI.Instance();
 
-            Athlete athlete = await activitiesAPI.GetAthlete();
-            List<Activities> activites = await activitiesAPI.GetActivities();
-            ActivityStats activityStats = await activitiesAPI.GetAthleteStats(athlete);
-            athlete.ActivityStats = activityStats;
+            Athlete? athlete = await activitiesAPI.GetAthlete()!;
+            List<Activities>? activites = await activitiesAPI.GetActivities()!;
 
-            Utilities.parseData(athlete, activites);
 
-            HomeViewModel homeViewModel = new HomeViewModel();
-            homeViewModel.athlete = athlete;
-            homeViewModel.activities = activites;
+            if (athlete != null && activites != null)
+            {
+                ActivityStats? activityStats = await activitiesAPI.GetAthleteStats(athlete)!;
+                athlete.ActivityStats = activityStats;
 
-            return View(homeViewModel);
+                Utilities.parseData(athlete, activites);
+
+                HomeViewModel homeViewModel = new HomeViewModel();
+                homeViewModel.athlete = athlete;
+                homeViewModel.activities = activites;
+                return View(homeViewModel);
+            }
+            return RedirectToAction("Error");
         }
         
         public IActionResult About()

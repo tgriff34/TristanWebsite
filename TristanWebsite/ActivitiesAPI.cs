@@ -11,9 +11,17 @@ namespace TristanWebsite
 {
     public sealed class ActivitiesAPI
     {
+        private class APIKey
+        {
+            public string Access_token { get; set; }
+            public long Expires_at {  get; set; }
+        }
+
         private static ActivitiesAPI? instance = null;
         private static readonly HttpClient _httpClient = new HttpClient();
-        private static string? access_token, maps_key;
+        private static string? access_token, maps_key, refresh_token, client_id, client_secret;
+        private static string? refresh_api_base, client_param, client_secret_param, refresh_token_param, refresh_api_end;
+        private static long? access_token_expires;
 
         private ActivitiesAPI() {
             
@@ -24,66 +32,134 @@ namespace TristanWebsite
             if (instance == null)
             {
                 IConfigurationRoot config = new ConfigurationBuilder().AddUserSecrets<ActivitiesAPI>().Build();
-                access_token = config["StravaAPIKey"];
+                client_id = config["client_id"];
+                client_secret = config["client_secret"];
+                refresh_token = config["refresh_token"];
+
                 maps_key = config["MapsAPIKey"];
+
+                refresh_api_base = config["RefreshAPIBase"];
+                client_param = config["ClientParam"];
+                client_secret_param = config["ClientSecretParam"];
+                refresh_token_param = config["RefreshTokenParam"];
+                refresh_api_end = config["RefreshAPIEnd"];
+
+                GetKey();
+
                 instance = new ActivitiesAPI();
             }
             return instance;
         }
 
-        public async Task<List<Activities>> GetActivities()
+        private static void GetKey()
+        {
+            HttpResponseMessage? output = null;
+
+            long now = DateTimeOffset.Now.ToUnixTimeSeconds();
+
+            if (now < access_token_expires && access_token != null) {
+                return;
+            }
+            
+            using (var requestMessage = new HttpRequestMessage(HttpMethod.Post, $"{refresh_api_base}{client_param}{client_id}{client_secret_param}{client_secret}{refresh_token_param}{refresh_token}{refresh_api_end}"))
+            {
+                output = _httpClient.Send(requestMessage);
+            }
+
+            try
+            {
+                output.EnsureSuccessStatusCode();
+
+                string json = output.Content.ReadAsStringAsync().Result;
+
+                APIKey apiKey = JsonConvert.DeserializeObject<APIKey>(json)!;
+
+                access_token_expires = apiKey.Expires_at;
+                access_token = apiKey.Access_token;
+            }
+            catch (Exception) { }
+        }
+
+        public async Task<List<Activities>>? GetActivities()
         {
             HttpResponseMessage output;
+            List<Activities>? activities = null;
 
             using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, "https://www.strava.com/api/v3/athlete/activities"))
             {
+                GetKey();
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", access_token);
 
                 output = await _httpClient.SendAsync(requestMessage);
             }
 
-            string json = await output.Content.ReadAsStringAsync();
-
-            var result = JsonConvert.DeserializeObject<List<Activities>>(json)!;
-
-            foreach (var activity in result)
+            try
             {
-                activity.Map = GetMapImgSrc(activity.Map);
-                //activity.Location = await GetLocation(activity.Start_latlng);
-            }
+                output.EnsureSuccessStatusCode();
+                string json = await output.Content.ReadAsStringAsync();
 
-            return result;
+                activities = JsonConvert.DeserializeObject<List<Activities>>(json)!;
+                foreach (var activity in activities)
+                {
+                    activity.Map = GetMapImgSrc(activity.Map);
+                    //activity.Location = await GetLocation(activity.Start_latlng);
+                }
+            }
+            catch (Exception) { }
+
+            return activities!;
         }
 
-        public async Task<Athlete> GetAthlete()
+        public async Task<Athlete>? GetAthlete()
         {
             HttpResponseMessage output;
+            Athlete? athlete = null;
+
+
             using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, "https://www.strava.com/api/v3/athlete"))
             {
+                GetKey();
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", access_token);
 
                 output = await _httpClient.SendAsync(requestMessage);
             }
-            string json = await output.Content.ReadAsStringAsync();
 
-            return JsonConvert.DeserializeObject<Athlete>(json)!;
+            try
+            {
+                output.EnsureSuccessStatusCode();
+                string json = await output.Content.ReadAsStringAsync();
+                athlete = JsonConvert.DeserializeObject<Athlete>(json);
+            }
+            catch (Exception) { }
+                
+            return athlete!;
         }
 
-        public async Task<ActivityStats> GetAthleteStats(Athlete athlete)
+        public async Task<ActivityStats>? GetAthleteStats(Athlete athlete)
         {
             HttpResponseMessage output;
+            ActivityStats? activityStats = null;
+
             using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, $"https://www.strava.com/api/v3/athletes/{athlete.Id}/stats"))
             {
+                GetKey();
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", access_token);
 
                 output = await _httpClient.SendAsync(requestMessage);
             }
-            string json = await output.Content.ReadAsStringAsync();
 
-            return JsonConvert.DeserializeObject<ActivityStats>(json)!;
+            try
+            {
+                output.EnsureSuccessStatusCode();
+                string json = await output.Content.ReadAsStringAsync();
+                activityStats = JsonConvert.DeserializeObject<ActivityStats>(json);
+            }
+            catch (Exception) { }
+
+            return activityStats!;
         }
 
-        public async Task<string> GetLocation(float[] latlng)
+        public async Task<string>? GetLocation(float[] latlng)
         {
             float lat = latlng[0];
             float lng = latlng[1];
@@ -96,9 +172,9 @@ namespace TristanWebsite
             }
             string json = await output.Content.ReadAsStringAsync();
 
-            Location location = JsonConvert.DeserializeObject<Location>(json)!;
+            Location? location = JsonConvert.DeserializeObject<Location>(json);
 
-            return $"{location.Features[0].Properties.Context.Place.Name}, {location.Features[0].Properties.Context.Region.Name}";
+            return $"{location?.Features[0].Properties.Context.Place.Name}, {location?.Features[0].Properties.Context.Region.Name}";
         }
 
         public Map GetMapImgSrc(Map map)
