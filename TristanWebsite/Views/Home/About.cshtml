@@ -6,39 +6,49 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 
-<div class="card" style="width:fit-content; height:fit-content; margin:auto; margin-bottom:20px; display:block;">
+<div class="card" style="width:50%; height:fit-content; margin:auto; margin-bottom:20px; display:block;">
     <div style="text-align:center;">
         <div class="row" style="--bs-gutter-x:0; display:inline-flex;">
-            <img class="img-circle" src="/files/me.jpeg" style="padding:0; height:128px; width:128px; margin:10px;"/>
+            <img class="img-circle" src="/files/me4.jpeg" style="padding:0; height:128px; width:128px; margin:10px;"/>
             <div class="card-title" style="margin:20px; width:auto; align-content:center;">
                 <h3>Hello! 👋</h3>
             </div>
         </div>
-        <div class="card-body">
+        <h5>
+            Welcome to my website! 
+        </h5>
+        <div class="card-body" style="text-align: left; max-width:inherit;">
             <p>
-                Welcome to my website! 
-                <br />
                 I built this website to learn more about ASP.NET and full-stack development.
-                <br />
-                It utilizes C#, HTML, CSS, JavaScript, RESTful APIs and more!
+                It uses the ASP.NET Core framework utilizing the MVC design pattern 
+                and is written in C#, HTML, CSS, JavaScript, RESTful APIs, SQL, and more!
+                <br/>
+                <br/>
+                I hosted this website using Micrsoft Azure, it allowed for easy secrets management using
+                Azure Keyvault and fast way to deploy changes to a production environment.
+                <br/>
+                <br/>
+                On this page you can view or download my Resume, and if you navigate to 'My Strava'
+                from the navigation bar you can view my most recent cycling rides!  The Strava data
+                is pulled using the Strava API and is deserialzed into objects using the Newtonsoft.json Nuget package.
             </p>
         </div>
-        <div class="row" style="display:block; margin:20px;">
+       @*  <div class="row" style="display:block; margin:20px;">
             <a href="https://www.linkedin.com/in/tjgriff/" style="width:auto;">
                 <img src="/files/LI-In-Bug.png" style="height:54px; width:63.5px;"/>
             </a>
             <a href="https://github.com/tgriff34" style="width:auto;">
                 <img src="/files/github-mark.png" style="height:48px; width:48px;"/>
             </a>
-        </div>
+        </div> *@
     </div>
 </div>
 
 <div class="text-center">
-    <p><a href="/files/tristangriffin_resume.pdf" download="tristangriffin_resume">Download</a> Resume as a PDF or <a asp-controller="Home" asp-action="Resume">View</a></p>
+    <p><a href="/files/tristangriffin_resume_copy.pdf" download="tristangriffin_resume">Download</a> Resume as a PDF or <a asp-controller="Home" asp-action="Resume">View</a></p>
 </div>
 
 <div class="card" style="width:fit-content; height:fit-content; margin:auto; display:block;">
-    <img src="/files/tristangriffin_resume.png" style="width:auto; height:auto;" />
+    <img src="/files/tristangriffin_resume_copy.png" style="width:auto; height:auto;" />
 </div>
 

@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 using System.Net.Http.Headers;
@@ -27,22 +29,19 @@ namespace TristanWebsite
             
         }
 
-        public static ActivitiesAPI Instance()
+        public static ActivitiesAPI Instance(API? api)
         {
             if (instance == null)
             {
-                IConfigurationRoot config = new ConfigurationBuilder().AddUserSecrets<ActivitiesAPI>().Build();
-                client_id = config["client_id"];
-                client_secret = config["client_secret"];
-                refresh_token = config["refresh_token"];
-
-                maps_key = config["MapsAPIKey"];
-
-                refresh_api_base = config["RefreshAPIBase"];
-                client_param = config["ClientParam"];
-                client_secret_param = config["ClientSecretParam"];
-                refresh_token_param = config["RefreshTokenParam"];
-                refresh_api_end = config["RefreshAPIEnd"];
+                client_id = api?.client_id;
+                client_secret = api?.client_secret;
+                refresh_token = api?.refresh_token;
+                maps_key = api?.maps_key;
+                refresh_api_base = api?.refresh_api_base;
+                client_param = api?.client_param;
+                client_secret_param = api?.client_secret_param;
+                refresh_token_param = api?.refresh_token_param;
+                refresh_api_end = api?.refresh_api_end;
 
                 GetKey();
 

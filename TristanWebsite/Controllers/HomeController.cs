@@ -15,7 +15,7 @@ namespace TristanWebsite.Controllers
 
         public async Task<IActionResult> Index()
         {
-            ActivitiesAPI activitiesAPI = ActivitiesAPI.Instance();
+            ActivitiesAPI activitiesAPI = ActivitiesAPI.Instance(null);
 
             Athlete? athlete = await activitiesAPI.GetAthlete()!;
             List<Activities>? activites = await activitiesAPI.GetActivities()!;

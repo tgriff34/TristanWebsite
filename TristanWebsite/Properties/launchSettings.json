@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "http://json.schemastore.org/launchsettings.json",
   "iisSettings": {
     "windowsAuthentication": false,
@@ -15,7 +15,10 @@
       "launchBrowser": true,
       "applicationUrl": "http://localhost:5132",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "VaultUri": "https://tristanwebsitevault.vault.azure.net/",
+        "AZURE_USERNAME": "tristangriffin@icloud.com",
+        "ConnectionString": "Endpoint=https://tristanwebsiteconfig.azconfig.io;Id=2SCi;Secret=7e2nam535thFFkRFb1LydPZqKILI67AJXmx3tq1QxKP03lPmab43JQQJ99AIACBsN54f8vFjAAABAZACAXDz"
       }
     },
     "https": {
@@ -24,14 +27,20 @@
       "launchBrowser": true,
       "applicationUrl": "https://localhost:7238;http://localhost:5132",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "VaultUri": "https://tristanwebsitevault.vault.azure.net/",
+        "AZURE_USERNAME": "tristangriffin@icloud.com",
+        "ConnectionString": "Endpoint=https://tristanwebsiteconfig.azconfig.io;Id=2SCi;Secret=7e2nam535thFFkRFb1LydPZqKILI67AJXmx3tq1QxKP03lPmab43JQQJ99AIACBsN54f8vFjAAABAZACAXDz"
       }
     },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "VaultUri": "https://tristanwebsitevault.vault.azure.net/",
+        "AZURE_USERNAME": "tristangriffin@icloud.com",
+        "ConnectionString": "Endpoint=https://tristanwebsiteconfig.azconfig.io;Id=2SCi;Secret=7e2nam535thFFkRFb1LydPZqKILI67AJXmx3tq1QxKP03lPmab43JQQJ99AIACBsN54f8vFjAAABAZACAXDz"
       }
     }
   }
