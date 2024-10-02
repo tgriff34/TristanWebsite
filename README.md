@@ -2,6 +2,8 @@ Hello! 👋
 
 https://tristanwebsite-fka3ezcyduh4h7ck.canadacentral-01.azurewebsites.net/
 
+My name is Tristan and I'm a Software Engineer! More than that I'm also an avid cyclist and when I saw that Strava (popular athletic app to share rides/runs/swims) had an API available for developers I had to give it a shot at making something for myself.  Typically, in order to view a Strava profile you must have an account yourself.  Using the API circumnavigates this restriction as I can pull my data and display it on my very own website which I've done here!
+
 I built this website to learn more about ASP.NET and full-stack development. It uses the ASP.NET Core framework utilizing the MVC design pattern and is written in C#, HTML, CSS, JavaScript, RESTful APIs, SQL, and more!
 
 I hosted this website using Microsoft Azure, it allowed for easy secrets management using Azure Key Vault and fast way to deploy changes to a production environment.
