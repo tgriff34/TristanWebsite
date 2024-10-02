@@ -4,7 +4,7 @@ https://tristanwebsite-fka3ezcyduh4h7ck.canadacentral-01.azurewebsites.net/
 
 I built this website to learn more about ASP.NET and full-stack development. It uses the ASP.NET Core framework utilizing the MVC design pattern and is written in C#, HTML, CSS, JavaScript, RESTful APIs, SQL, and more!
 
-I hosted this website using Micrsoft Azure, it allowed for easy secrets management using Azure Keyvault and fast way to deploy changes to a production environment.
+I hosted this website using Micrsoft Azure, it allowed for easy secrets management using Azure Key Vault and fast way to deploy changes to a production environment.
 
 On this page you can view or download my Resume, and if you navigate to 'My Strava' from the navigation bar you can view my most recent cycling rides! The Strava data is pulled using the Strava API and is deserialzed into objects using the Newtonsoft.json Nuget package.
 
@@ -14,7 +14,7 @@ The maps drawn using the polyline received from the strava API which is then enc
 
 The home page contains the same little blurb as above, describing the stack used to build the website and why.
 
-![image](https://github.com/user-attachments/assets/a516034a-d1f7-4f20-8def-a10560a6d2ba)
+![image](https://github.com/user-attachments/assets/3d2a01a1-4fd2-497b-8c59-993123a6fb0e)
 
 The strava page is a list of my recent cycling rides.
 
