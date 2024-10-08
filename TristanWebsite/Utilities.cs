@@ -29,6 +29,7 @@ namespace TristanWebsite
                 foreach (var entity in activities)
                 {
                     DateTime dateTime = DateTime.Parse(entity.Start_Date);
+                    dateTime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(dateTime, "Eastern Standard Time");
                     entity.Start_Date_Formatted = $"{GetMonthName(dateTime.Month)} {dateTime.Day}, {dateTime.Year}";
                     entity.Start_Time_Formatted = $"{GetHourAMPM(dateTime)}";
                     entity.Moving_Time_Str = GetMovingTime(entity.Moving_Time);
