@@ -181,8 +181,7 @@ namespace TristanWebsite
             string polyline = map.Summary_Polyline;
             string encodedPolyline = "";
 
-            encodedPolyline = polyline.Replace(@"\\", @"\");
-            encodedPolyline = HttpUtility.UrlEncode(encodedPolyline);
+            encodedPolyline = HttpUtility.UrlEncode(polyline);
 
             map.MapImageURL = $"https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/path({encodedPolyline})/auto/600x400?access_token={maps_key}";
 
