@@ -76,7 +76,10 @@ namespace TristanWebsite
                 access_token_expires = apiKey.Expires_at;
                 access_token = apiKey.Access_token;
             }
-            catch (Exception) { }
+            catch (Exception) {
+                Debug.WriteLine("Failed to get access token");
+            }
+
         }
 
         public async Task<List<Activities>>? GetActivities()
@@ -104,7 +107,9 @@ namespace TristanWebsite
                     //activity.Location = await GetLocation(activity.Start_latlng);
                 }
             }
-            catch (Exception) { }
+            catch (Exception) {
+                Debug.WriteLine("Failed to get activities");
+            }
 
             return activities!;
         }
@@ -129,7 +134,9 @@ namespace TristanWebsite
                 string json = await output.Content.ReadAsStringAsync();
                 athlete = JsonConvert.DeserializeObject<Athlete>(json);
             }
-            catch (Exception) { }
+            catch (Exception) { 
+                Debug.WriteLine("Failed to get athlete");
+            }
                 
             return athlete!;
         }
@@ -153,7 +160,9 @@ namespace TristanWebsite
                 string json = await output.Content.ReadAsStringAsync();
                 activityStats = JsonConvert.DeserializeObject<ActivityStats>(json);
             }
-            catch (Exception) { }
+            catch (Exception) {
+                Debug.WriteLine("Failed to get activity stats");
+            }
 
             return activityStats!;
         }

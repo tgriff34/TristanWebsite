@@ -8,9 +8,9 @@ namespace TristanWebsite.Models
 
         [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = true)]
         public float Distance { get; set; }
-        public int Moving_Time { get; set; }
+        public long Moving_Time { get; set; }
         public string Moving_Time_Str { get; set; }
-        public int Elapsed_Time { get; set; }
+        public long Elapsed_Time { get; set; }
         public string Elaspsed_Time_Str { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = true)]

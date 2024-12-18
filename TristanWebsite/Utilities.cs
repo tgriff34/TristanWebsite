@@ -42,10 +42,10 @@ namespace TristanWebsite
 
             return;
         }
-        private static string GetMovingTime(int movingTime)
+        private static string GetMovingTime(long movingTime)
         {
             TimeSpan time = TimeSpan.FromSeconds(movingTime);
-            string result = string.Format("{0}h {1}m {2}s", (int)time.TotalHours, time.Minutes, time.Seconds);
+            string result = string.Format("{0}h {1}m {2}s", (long)time.TotalHours, time.Minutes, time.Seconds);
             return result;
         }
         private static string GetHourAMPM(DateTime dateTime)
