@@ -32,5 +32,8 @@ namespace TristanWebsite.Models
         public Map Map { get; set; }
         public float[] Start_latlng { get; set; }
         public string Location {  get; set; }
+        public int PR_Count { get; set; }
+        public int Kudos_Count { get; set; }
+
     }
 }

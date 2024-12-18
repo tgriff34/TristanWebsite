@@ -64,8 +64,8 @@
             <div class="card" style="margin-bottom:10px;">
                 <div class="card-body">
                     <div class="row">
-                        <img class="img-circle" src="@Url.Content(Model.athlete.Profile)" style="padding:0; margin:10px; width:64px; height:64px;">
-                        <div class="card-title" style="width:auto; align-content: center;">
+                        <img class="img-circle" src="@Url.Content(Model.athlete.Profile)" style="max-width:15%; padding:0; margin:10px; width:64px; height:64px;">
+                        <div class="card-title" style="max-width:80%; align-content: center;">
                             <h2>
                                 @activity.Name
                             </h2>
@@ -76,8 +76,37 @@
                                 @activity.Location
                             </div>
                         </div>
+                        @if (@activity.PR_Count > 0)
+                        {
+                            <span class="material-symbols-outlined" style="width:auto; margin-left:auto; margin-right:0; padding-right:0; margin-top:10px">
+                                  workspace_premium 
+                            </span>
+                            <div class="card-subtitle" style="width:auto; font-size:small; padding-left:0; margin-top:10px">
+                                @activity.PR_Count
+                            </div>
+                        }
                     </div>
                     <img src="@Url.Content(activity.Map.MapImageURL)" style="max-width:600px; width:100%; height:auto; margin:auto; border-radius:10px; display:block;"/>
+                    <div class="row" style="margin-top:15px">
+                        @if (activity.Kudos_Count == 0) {
+                            <div class="card-text" style="width:auto; margin-left:5%; align-content:center">
+                                No one has given kudos yet!
+                            </div>
+                        } else {
+                            <span class="material-symbols-outlined" style="margin-left:5%; width:auto">
+                                    thumb_up
+                            </span>
+                            @if (activity.Kudos_Count == 1) {
+                                <div class="card-text" style="width:auto; padding:0px; align-content:center">
+                                        @Html.DisplayFor(item => activity.Kudos_Count) person gave kudos!
+                                </div>
+                            } else {
+                                <div class="card-text" style="width:auto; padding:0px; align-content:center">
+                                        @Html.DisplayFor(item => activity.Kudos_Count) people gave kudos!
+                                </div>
+                            }
+                        }
+                    </div>
                     <hr/>
                     <div class="row">
                         <div class="evenLeft centerColumn">
