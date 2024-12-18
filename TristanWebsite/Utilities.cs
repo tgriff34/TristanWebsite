@@ -106,7 +106,7 @@ namespace TristanWebsite
                     result = "Nov";
                     break;
                 case 12:
-                    result = "Dev";
+                    result = "Dec";
                     break;
                 default:
                     break;
