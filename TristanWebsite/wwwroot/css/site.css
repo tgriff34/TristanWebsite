@@ -70,10 +70,31 @@ hr {
     height: inherit;
     padding: 0;
 }
-@media screen and (max-width: 1280px) {
+.aboutCard {
+    width:50%; 
+    height:fit-content; 
+    margin:auto; 
+    margin-bottom:20px; 
+    display:block;
+}
+@media screen and (max-width:1200px) {
+    .expandCard {
+        width:auto;
+    }
+}
+@media screen and (min-width:800px) and (max-width: 1280px) {
     .verticalRowAsColumn{
         display: block;
         justify-items:center;
         width:auto;
+    }
+}
+@media screen and (max-width: 800px) {
+    .verticalRowAsColumn800{
+        display: block;
+/*        justify-items:center;*/
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width:100%;
     }
 }
