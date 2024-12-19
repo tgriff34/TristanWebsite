@@ -41,6 +41,7 @@ hr {
 }
 .row {
     align-content:center;
+    overflow-wrap:normal;
 }
 .centerColumn{
     text-align:center;
@@ -68,4 +69,11 @@ hr {
     border-left: 1px solid #DEDEDE;
     height: inherit;
     padding: 0;
+}
+@media screen and (max-width: 1280px) {
+    .verticalRowAsColumn{
+        display: block;
+        justify-items:center;
+        width:auto;
+    }
 }
