@@ -46,7 +46,7 @@ namespace TristanWebsite.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Portfolio()
         {
             return View();
         }
